@@ -10,3 +10,11 @@ export interface UpdateTaskProps {
   description: string;
   images: Array<string>;
 }
+
+export interface ChangeTaskCompletionProps {
+  id: string;
+}
+
+export interface DeleteTaskProps {
+  id: string;
+}

@@ -1,6 +1,8 @@
 import { createId } from '@paralleldrive/cuid2';
 import type {
+  ChangeTaskCompletionProps,
   CreateTaskProps,
+  DeleteTaskProps,
   UpdateTaskProps
 } from '../interfaces/tasks-services.js';
 import { TaskModel } from '../models/index.js';
@@ -36,6 +38,26 @@ class TaskService {
 
     return {
       updatedTask
+    };
+  }
+
+  async changeTaskCompletion({ id }: ChangeTaskCompletionProps) {
+    const taskCompleted = await TaskModel.findOneAndUpdate(
+      { id },
+      [{ $set: { completed: { $not: '$completed' } } }],
+      { new: true }
+    );
+
+    return {
+      taskCompleted
+    };
+  }
+
+  async deleteTask({ id }: DeleteTaskProps) {
+    const deletedTask = await TaskModel.findOneAndDelete({ id });
+
+    return {
+      deletedTask
     };
   }
 }
