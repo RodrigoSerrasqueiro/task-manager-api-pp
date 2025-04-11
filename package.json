@@ -2,11 +2,10 @@
   "name": "task-manager-api-pp",
   "version": "1.0.0",
   "type": "module",
-  "main": "src/server.ts",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "tsx --env-file=.env --watch src/server.ts",
-    "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "tsc",
     "start": "node --env-file=.env dist/server.js"
   },
   "keywords": [],
