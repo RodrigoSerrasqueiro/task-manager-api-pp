@@ -5,7 +5,8 @@
   "main": "src/server.ts",
   "scripts": {
     "dev": "tsx --env-file=.env --watch src/server.ts",
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "build": "npm run clean && tsc",
     "start": "node --env-file=.env dist/server.js"
   },
   "keywords": [],
